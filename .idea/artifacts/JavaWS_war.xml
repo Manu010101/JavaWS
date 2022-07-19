@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="JavaWS:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>JavaWS</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="JavaWS-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="JavaWS:war exploded" />
+    </root>
+  </artifact>
+</component>
