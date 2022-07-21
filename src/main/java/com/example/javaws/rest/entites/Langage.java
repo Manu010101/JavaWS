@@ -1,8 +1,14 @@
 package com.example.javaws.rest.entites;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import java.util.List;
 @Entity
+@XmlRootElement(name="Langage")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Langage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -11,6 +17,7 @@ public class Langage {
     private String caracteristiques;
 
     @OneToMany(mappedBy = "langage", fetch = FetchType.EAGER)
+    @XmlTransient
     private List<Ide> ides;
 
     public Langage(){

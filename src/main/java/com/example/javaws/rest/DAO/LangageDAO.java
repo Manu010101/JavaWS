@@ -8,7 +8,6 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 import java.util.List;
 
-//TODO: implementer le on delete cascade à la main
 public class LangageDAO {
 
     private static final String PERSISTENCE_UNIT_NAME = "persistenceUnit";
