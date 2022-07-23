@@ -1,11 +1,13 @@
-package com.example.javaws.rest.DAO;
+package com.example.javaws.DAO;
 
-import com.example.javaws.rest.entites.Langage;
+import com.example.javaws.entites.Ide;
+import com.example.javaws.entites.Langage;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import java.util.ArrayList;
 import java.util.List;
 
 public class LangageDAO {
@@ -18,6 +20,15 @@ public class LangageDAO {
         Langage langage = em.find(Langage.class, id);
         em.close();
         return langage;
+    }
+
+    public static List<Ide> getIdesAssociesToLangage(int id){
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+        EntityManager em = emf.createEntityManager();
+        Langage langage = em.find(Langage.class, id);
+        List<Ide> ides = langage.getIdes();
+        em.close();
+        return ides;
     }
 
     public static List<Langage> getAll() {
@@ -70,6 +81,15 @@ public class LangageDAO {
 
         em.getTransaction().commit();
         em.close();
+    }
+
+    public static List<Integer> getLangagesIds(){
+        List<Integer> langageIds = new ArrayList<>();
+        List<Langage> langages = LangageDAO.getAll();
+        for (Langage langage : langages) {
+            langageIds.add(langage.getId());
+        }
+        return langageIds;
     }
 
 

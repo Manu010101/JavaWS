@@ -8,8 +8,8 @@
 
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
-        <class>com.example.javaws.rest.entites.Ide</class>
-        <class>com.example.javaws.rest.entites.Langage</class>
+        <class>com.example.javaws.entites.Ide</class>
+        <class>com.example.javaws.entites.Langage</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>

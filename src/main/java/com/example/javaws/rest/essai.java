@@ -1,11 +1,6 @@
 package com.example.javaws.rest;
 
-import com.example.javaws.rest.DAO.LangageDAO;
-import com.example.javaws.rest.entites.Langage;
-
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import com.example.javaws.DAO.LangageDAO;
 
 public class essai {
 

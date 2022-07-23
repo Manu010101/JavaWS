@@ -1,12 +1,11 @@
 package com.example.javaws.soap;
 
-import com.example.javaws.rest.DAO.LangageDAO;
-import com.example.javaws.rest.entites.Langage;
+import com.example.javaws.DAO.LangageDAO;
+import com.example.javaws.entites.Langage;
 
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
-import java.util.ArrayList;
 import java.util.List;
 
 @WebService()
@@ -19,12 +18,7 @@ public class LangageWS {
 
     @WebMethod(operationName = "getLangageIds")
     public List<Integer> getLangageIds() {
-        List<Integer> langageIds = new ArrayList<>();
-        List<Langage> langages = LangageDAO.getAll();
-        for (Langage langage : langages) {
-            langageIds.add(langage.getId());
-        }
-        return langageIds;
+        return LangageDAO.getLangagesIds();
     }
 
     @WebMethod(operationName = "getLangages")

@@ -1,4 +1,6 @@
-package com.example.javaws.rest.entites;
+package com.example.javaws.entites;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -18,6 +20,7 @@ public class Langage {
 
     @OneToMany(mappedBy = "langage", fetch = FetchType.EAGER)
     @XmlTransient
+    @JsonIgnore
     private List<Ide> ides;
 
     public Langage(){
