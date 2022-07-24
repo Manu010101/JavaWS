@@ -50,6 +50,7 @@ public class LangageResource {
 
             return Response
                     .ok(langage)
+                    .status(201)
                     .build();
         } catch (Exception exception) {
             return Response.status(500).build();
@@ -59,14 +60,22 @@ public class LangageResource {
     @DELETE
     @Path("/{id}")
     public Response deleteLangage(@PathParam("id") int id) {
-        LangageDAO.destroy(id);
-        return Response.status(200).build();
+        if (!LangageDAO.getLangagesIds().contains(id)) {
+            return Response.status(404).build();
+        }
+        try {
+            LangageDAO.destroy(id);
+            return Response.status(200).build();
+        } catch (Exception exception) {
+            return Response.status(500).build();
+        }
+
     }
 
     @GET
     @Path("/{id}/ides")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getLangageWithIdes(@PathParam("id") int id){
+    public Response getLangageWithIdes(@PathParam("id") int id) {
         Langage langage = LangageDAO.findById(id);
         List<Ide> ides = LangageDAO.getIdesAssociesToLangage(id);
         List<Object> reponse = new ArrayList<>();
@@ -78,7 +87,7 @@ public class LangageResource {
     @GET
     @Path("/ids")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getLangagesIds(){
+    public Response getLangagesIds() {
         return Response.ok(LangageDAO.getLangagesIds()).build();
     }
 
